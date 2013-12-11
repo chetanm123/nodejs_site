@@ -6,7 +6,7 @@ http.createServer(function(req,res){
 
 	// data to render
 	var names = ['Joe Brown', 'Mary', 'Sue', 'Mark'];
-	var title = 'Testing EJS';
+	var title = 'Testing EJS System';
 
 	//render or error
 	ejs.renderFile(__dirname+'/views/test.ejs',
