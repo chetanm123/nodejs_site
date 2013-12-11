@@ -1,0 +1,15 @@
+<html>
+<head>
+<title><%= title %></title>
+</head>
+<body>
+	<% if (names.length){ %>
+		<ul>
+		<% names.forEach(function(name){ %>
+			<li><%= name %></li>
+		<% }); %>
+		</ul>
+	<% } %>
+	<p><%=: names|first|downcase %>
+</body>
+</html>
