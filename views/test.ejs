@@ -10,6 +10,7 @@
 		<% }); %>
 		</ul>
 	<% } %>
-	<p><%=: names|first|downcase %>
+	<p><%=: names|downcase %></p>
+	<p><%=: people|map:'name'|sort|join %></p>
 </body>
 </html>

@@ -14,10 +14,10 @@ var server = http.createServer(app);
 // Configuration
 
 app.configure(function(){
-  app.engine('html',swig.renderFile);
-  app.set('view engine', 'html');	
+  //app.engine('html',swig.renderFile);
+  //app.set('view engine', 'html');	
   app.set('views', __dirname + '/views');
-  //app.set('view engine', 'jade');
+  app.set('view engine', 'ejs');
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
