@@ -11,9 +11,9 @@ exports.index = function(req, res) {
 };
 // display new widget form
 exports.new = function(req, res) {
-	var filePath = require(path).normalize(__dirname+'/../public/widgets/new.html');
+	var filePath = require(path).normalize(__dirname+'./../public/widgets/new.html');
 	res.sendFile(filePath);
-	//res.send('displaying new widget form');
+	
 };
 // add a widget
 exports.create = function(req, res) {

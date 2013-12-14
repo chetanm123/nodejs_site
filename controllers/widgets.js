@@ -2,16 +2,23 @@ var widgets = [
 	{ 
 		id : 1,
 		name : "The Great Widget",
-		price : 1000.00
+		price : 1000.00,
+		desc : "Here is my first widget"
 	}
 ]
 // index listing of widgets at /widgets/
 exports.index = function(req, res) {
-	res.send(widgets);
+	res.render("widgets/index",
+		{
+			title:'Widgets',
+			widgets:widgets
+		});
 };
 // display new widget form
 exports.new = function(req, res) {
-	res.send('displaying new widget form');
+	var filePath = require('path').normalize(__dirname+"/../public/widgets/new.html");
+	res.sendfile(filePath);
+	
 };
 // add a widget
 exports.create = function(req, res) {
@@ -20,9 +27,11 @@ exports.create = function(req, res) {
 	{ 
 		id : indx,
 		name : req.body.widgetname,
-		price : parseFloat(req.body.widgetprice) };
-		console.log(widgets[indx-1]);
-		res.send('Widget ' + req.body.widgetname + ' added with id ' + indx);
+		price : parseFloat(req.body.widgetprice),
+		desc:req.body.widgetdesc
+	};
+		//res.send('Widget ' + req.body.widgetname + ' added with id ' + indx);
+		res.render('widgets/index',{title:'Widget Added',widgets:widgets});
 	};
 // show a widget
 exports.show = function(req, res) {

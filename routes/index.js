@@ -4,7 +4,7 @@
  */
 
 exports.index = function(req, res){
-  res.render('exp_temp.html', { title: 'Widget Factory' },function(err,stuff){
+  res.render('exp_temp', { title: 'Widget Factory' },function(err,stuff){
 	if(!err){
 		console.log(stuff);
 		res.write(stuff);
