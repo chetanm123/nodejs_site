@@ -14,5 +14,5 @@ app.get(prefix + '/:id/edit', prefixObj.edit);
 // update
 app.put(prefix + '/:id', prefixObj.update);
 // destroy
-app.del(prefix + '/:id', prefixObj.destroy);
+app.get(prefix + '/:id/delete', prefixObj.destroy);
 };

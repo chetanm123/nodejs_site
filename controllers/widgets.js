@@ -45,8 +45,10 @@ var indx = parseInt(req.params.id) - 1;
 exports.destroy = function(req, res) {
 	var indx = req.params.id - 1;
 	delete widgets[indx];
-	console.log('deleted ' + req.params.id);
-	res.send('deleted ' + req.params.id);
+	//console.log('deleted ' + req.params.id);
+	res.redirect('widgets/');
+	res.end();
+	//res.send('deleted ' + req.params.id);
 };
 // display edit form
 exports.edit = function(req, res) {
