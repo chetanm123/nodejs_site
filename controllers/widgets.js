@@ -52,7 +52,9 @@ exports.destroy = function(req, res) {
 };
 // display edit form
 exports.edit = function(req, res) {
-	res.send('displaying edit form');
+	var indx=  parseInt(req.params.id)-1;
+	res.render("widgets/edit",{title:"Edit Widget",widget:widgets[indx]});
+	//res.send('displaying edit form');
 };
 // update a widget
 exports.update = function(req, res) {
@@ -61,8 +63,11 @@ exports.update = function(req, res) {
 	{ 
 		id : indx,
 		name : req.body.widgetname,
-		price : parseFloat(req.body.widgetprice)}
-		console.log(widgets[indx]);
-		res.send ('Updated ' + req.params.id);
+		price : parseFloat(req.body.widgetprice),
+		desc : req.body.desc
+	}
+		res.redirect('widgets/');
+		//console.log(widgets[indx]);
+		//res.send ('Updated ' + req.params.id);
 	};
 
