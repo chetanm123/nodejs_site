@@ -18,11 +18,27 @@ var server = net.createServer(function(conn){
 			console.log(data + ' from '+ conn.remoteAddress + ' '+conn.remotePort);
 
 		try{
-		}catch(err){
 			var obj = JSON.parse(data);
-			console.log("OBJ "+obj);
+			
+			//add overwrite scores for
+			client.hset(obj.member,"first_name",obj.first_name,redis.print);
+			client.hset(obj.member,"first_name",obj.last_name,redis.print);
+			client.hset(obj.member,"first_name",obj.score,redis.print);
+			client.hset(obj.member,"first_name",obj.date,redis.print);
+
+			//add to Zowie
+			client.zadd("Zowie !",parseInt(obj.score),obj.member);
+
+		}catch(err){
+			console.log("Error "+err);
 		}
 	});
 
+	conn.on('close',function(){
+		console.log("client closed connection");
+		client.quit();
+	});
+
 }).listen(8124);
+
 console.log("Listening to port 8124");
