@@ -44,8 +44,19 @@ app.configure('production', function(){
 app.get('/', routes.index);
 
 /*
-	Post request handler
+	Post request handler for add/edit
 */
+app.post('/new_key',function(req,res){
+	/*
+		Error handling if unable to connect to redis
+	*/
+	client.on("error",function(err){
+		client.on("Redis server cannot be reached");	
+		client.set(req.body.key,req.body.value,redis.client);
+		req.send("Record has been added successfully");
+	});
+});
+
 
 app.listen(3000, function(){
   //console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
