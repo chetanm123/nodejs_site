@@ -51,9 +51,19 @@ app.post('/new_key',function(req,res){
 		Error handling if unable to connect to redis
 	*/
 	client.on("error",function(err){
-		client.on("Redis server cannot be reached");	
-		client.set(req.body.key,req.body.value,redis.client);
-		req.send("Record has been added successfully");
+		client.on("Redis server cannot be reached");
+	});
+		client.set(req.body.key,req.body.value,redis.client)
+		res.send("Record has been added successfully");
+	
+});
+
+/*
+	Post request handler for get new key
+*/
+app.post("/new_key/",function(){
+	client.on("err",function(){
+		res.send("No such key exists");
 	});
 });
 
