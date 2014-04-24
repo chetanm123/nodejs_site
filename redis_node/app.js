@@ -61,9 +61,12 @@ app.post('/new_key',function(req,res){
 /*
 	Post request handler for get new key
 */
-app.post("/new_key/",function(){
-	client.on("err",function(){
+app.post("/get_key",function(req,res){
+	client.on("err",function(err){
 		res.send("No such key exists");
+	});
+	client.get(req.body.key,function(err,reply){
+		res.send("The key value "+reply.toString());
 	});
 });
 
